@@ -26,7 +26,7 @@ This project is a Web-Based Application
 <br>
 
 ### Developer Name
-Ayesha Ashfaq
+Subhan Suleman
 <br>
 <br>
 

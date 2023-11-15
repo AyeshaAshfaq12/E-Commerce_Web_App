@@ -18,3 +18,23 @@ The problem is the need for a web app to manage spare parts effectively. The goa
 | --------------- | ------------------- | ----- |
 | Muhammad Subhan | 2021-CS-35          | Owner |
 | Ayesha Tanveer | 2020-CS-47R          | Developer |
+
+### Mock Users
+
+{
+
+ "firstName": "John",
+
+ "lastName": "Doe",
+
+ "DOB": "1990-01-01",
+
+ "role": "Admin",
+
+ "emailAddress": "admin@example.com",
+
+ "password": "admin123",
+
+ "isVerified": true
+
+}

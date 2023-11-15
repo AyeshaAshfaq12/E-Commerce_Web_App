@@ -1,7 +1,13 @@
 const User = require("../models/user");
 
 const { comparePasswords, hashPassword } = require("../utils/helper");
+// const { GenerateToken } = require("../middleware/authorization");
 const jwt = require("jsonwebtoken");
+const GenerateToken = (user) => {
+  const payload = { id: user._id, role: user.role };
+  const token = jwt.sign(payload, process.env.SECRET, { expiresIn: 10 });
+  return token;
+};
 
 const loginUser = async (req, res) => {
   console.log("emailAddress");
@@ -50,11 +56,6 @@ const logoutUser = async (req, res) => {
 };
 
 // JSON WebToken
-const GenerateToken = (user) => {
-  const payload = { id: user._id, role: user.role };
-  const token = jwt.sign(payload, process.env.SECRET, { expiresIn: 10 });
-  return token;
-};
 
 const createUser = async (req, res) => {
   try {
@@ -106,13 +107,16 @@ const getUserById = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
-    const deletedUser = await User.deleteOne({ _id: id });
-    if (deletedUser.deletedCount === 0) {
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if (!deletedUser) {
       return res.status(404).json({ error: "User not found" });
     }
-    res.status(204).end();
-    console.log(deletedUser);
+
+    res.status(200).json({
+      message: "User deleted successfully",
+      deletedUser: deletedUser,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

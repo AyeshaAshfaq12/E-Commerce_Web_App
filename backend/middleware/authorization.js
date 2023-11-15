@@ -38,8 +38,14 @@ function requireRoles(roles) {
     }
   };
 }
+const GenerateToken = (user) => {
+  const payload = { id: user._id, role: user.role };
+  const token = jwt.sign(payload, process.env.SECRET, { expiresIn: 10 });
+  return token;
+};
 
 module.exports = {
   validateToken,
   requireRoles,
+  GenerateToken,
 };

@@ -1,0 +1,52 @@
+<router-outlet></router-outlet>
+<div *ngIf="countdown !== null">
+  <p>You will time out in {{ countdown }} seconds!</p>
+</div>
+<div *ngIf="timedOut">
+  <p>Session timed out! Redirecting...</p>
+</div>
+
+<div id="alertModal" *ngIf="countdown !== null"
+  class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
+  <div class="p-4 max-w-md w-full">
+    <!-- Modal content -->
+    <div class="p-4 text-center bg-white rounded-lg shadow sm:p-5 dark:bg-gray-800">
+      <button type="button"
+        class="absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <svg fill="#000000" class="w-11 h-11 mb-3.5 mx-auto text-gray-400 dark:text-gray-500"
+        viewBox="0 -0.54 15.934 15.934" id="alert-triangle-16px" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path id="Path_175" data-name="Path 175"
+            d="M-11.036,16H-22.964a1.985,1.985,0,0,1-1.722-.981,1.985,1.985,0,0,1-.031-1.982l5.965-10.852A1.97,1.97,0,0,1-17,1.148a1.97,1.97,0,0,1,1.752,1.037l5.965,10.852a1.985,1.985,0,0,1-.031,1.982A1.985,1.985,0,0,1-11.036,16ZM-17,2.148a.987.987,0,0,0-.876.518l-5.965,10.852a.991.991,0,0,0,.016.991.993.993,0,0,0,.861.491h11.928a.993.993,0,0,0,.861-.491.989.989,0,0,0,.015-.991L-16.124,2.666A.987.987,0,0,0-17,2.148Zm.5,8.352v-6A.5.5,0,0,0-17,4a.5.5,0,0,0-.5.5v6a.5.5,0,0,0,.5.5A.5.5,0,0,0-16.5,10.5Zm0,3v-1A.5.5,0,0,0-17,12a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5A.5.5,0,0,0-16.5,13.5Z"
+            transform="translate(24.967 -1.148)"></path>
+        </g>
+      </svg>
+      <!-- <svg class="w-11 h-11 mb-3.5 mx-auto text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+          clip-rule="evenodd"></path>
+      </svg> -->
+      <p class="mb-4 text-gray-500 dark:text-gray-300">You will time out in {{ countdown }} seconds!</p>
+      <div class="flex justify-center items-center space-x-4">
+        <button type="button" (click)="stay()"
+          class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+          Stay
+        </button>
+        <button type="submit" (click)="logout()"
+          class="py-2 px-3 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const category = require("./category.js");
+const category = require("../models/images");
 
 const productSchema = new mongoose.Schema(
   {
@@ -58,7 +58,7 @@ const productSchema = new mongoose.Schema(
       },
     ],
     Category: {
-      type: category,
+      type: Object,
       required: true,
     },
     tags: [
@@ -78,6 +78,7 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
+    images: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }],
     reviews: [
       {
         customer: {

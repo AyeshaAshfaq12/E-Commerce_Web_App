@@ -4,11 +4,13 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const app = express();
 
 //Database
 require("./database/connect");
-require("./utils/authorization_middleware");
+require("./middleware/authorization");
 
 //Routes
 const usersRouter = require("./routes/users");
@@ -16,17 +18,38 @@ const usersRouter = require("./routes/users");
 //Middleware
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:4200" }));
 const notFoundMiddleware = require("./middleware/not-found");
 const errorMiddleware = require("./middleware/error-handler");
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: [process.env.COOKIESESSION],
-//     httpOnly: true,
-//     maxAge: 0.1 * 60 * 60 * 1000,
-//   })
-// );
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [process.env.COOKIESESSION],
+    httpOnly: true,
+    maxAge: 10 * 1000,
+  })
+);
+// Swagger Options
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "Your API Documentation",
+      version: "1.0.0",
+      description: "Documentation for your Express.js API SE",
+    },
+    servers: [
+      {
+        url: `http://localhost:${process.env.PORT}`, // replace with your actual port
+        description: "Local server",
+      },
+    ],
+  },
+  apis: [`${__dirname}/routes/*.js`], // Add the path to your route files
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Port
 app.set("port", process.env.PORT);

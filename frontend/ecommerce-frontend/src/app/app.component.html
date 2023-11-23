@@ -1,4 +1,15 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+<app-admin-layout></app-admin-layout>
+<!-- <app-product-card [product]="{
+  id: 1,
+  name: 'Sample Product',
+  price: 19.99
+}"></app-product-card> -->
+<!-- <app-create-product></app-create-product> -->
+
+
+
+
 <div *ngIf="countdown !== null">
   <p>You will time out in {{ countdown }} seconds!</p>
 </div>
@@ -9,7 +20,6 @@
 <div id="alertModal" *ngIf="countdown !== null"
   class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
   <div class="p-4 max-w-md w-full">
-    <!-- Modal content -->
     <div class="p-4 text-center bg-white rounded-lg shadow sm:p-5 dark:bg-gray-800">
       <button type="button"
         class="absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">

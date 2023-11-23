@@ -8,7 +8,7 @@ import { AppService } from './services/app.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'ecommerce-frontend';
@@ -21,25 +21,25 @@ export class AppComponent {
     keepalive: Keepalive,
     private router: Router,
     private appService: AppService,
-    private authService:AuthService
+    private authService: AuthService
   ) {
-    idle.setIdle(3600 );
+    idle.setIdle(3600);
     idle.setTimeout(60);
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
     idle.onIdleEnd.subscribe(() => {
-      this.idleState = 'No longer idle.'
+      this.idleState = 'No longer idle.';
       this.reset();
     });
 
     idle.onTimeout.subscribe(() => {
       this.idleState = 'Timed out!';
       this.timedOut = true;
-     this.logout()
+      this.logout();
     });
 
     idle.onIdleStart.subscribe(() => {
-      this.idleState = 'You\'ve gone idle!'
+      this.idleState = "You've gone idle!";
     });
 
     idle.onTimeoutWarning.subscribe((countdown) => {
@@ -52,12 +52,12 @@ export class AppComponent {
 
     this.appService.getUserLoggedIn().subscribe((userLoggedIn: any) => {
       if (userLoggedIn) {
-        idle.watch()
+        idle.watch();
         this.timedOut = false;
       } else {
         idle.stop();
       }
-    })
+    });
   }
 
   reset() {

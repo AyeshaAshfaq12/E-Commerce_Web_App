@@ -1,0 +1,162 @@
+<section class="bg-white font-primary dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto my-0 max-w-2xl ">
+    <div class="container">
+      <form autocomplete="off" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div class="sm:col-span-2">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SKU</label>
+            <input type="text" formControlName="SKU" name="name" id="name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="SKU Number" required="">
+          </div>
+          <div class="sm:col-span-2">
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+              Title</label>
+            <input type="text" formControlName="title" name="title" id="title"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Title" required="">
+          </div>
+
+          <div class="w-full">
+            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+            <input type="number" formControlName="price" name="price" id="price"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="$2999" min="1" required="">
+          </div>
+          <div class="w-full">
+            <label for="discount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discount</label>
+            <input type="number" formControlName="discount" name="discount" id="discount"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="13%" min="0" max="100" required="">
+
+
+
+          </div>
+
+          <div class="w-full">
+            <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+            <input type="number" formControlName="currentStock" min="1" name="stock" id="stock"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="999" required="">
+          </div>
+          <div class="w-full">
+            <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+            <div class="p-inputgroup">
+              <p-dropdown [options]="brands" formControlName="brand"
+                styleClass="bg-gray-50  rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
+                placeholder="Select a brand" [editable]="true"></p-dropdown>
+              <span><button type="button"
+                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g id="Edit / Add_Plus">
+                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  New
+                </button></span>
+            </div>
+          </div>
+          <div>
+
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+            <div class="p-inputgroup">
+              <p-dropdown [options]="categoriesName" formControlName="category"
+                styleClass="bg-gray-50 rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
+                placeholder="Select a category" [editable]="true"></p-dropdown>
+              <span><button type="button"
+                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g id="Edit / Add_Plus">
+                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  New
+                </button></span>
+            </div>
+
+          </div>
+
+          <div>
+            <label for="Status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+            <div class="p-inputgroup">
+              <p-dropdown [options]="statuses" formControlName="status"
+                styleClass="bg-gray-50  rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
+                placeholder="Select a status" [editable]="true"></p-dropdown>
+              <span><button type="button"
+                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g id="Edit / Add_Plus">
+                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  New
+                </button></span>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
+            <div class="p-inputgroup">
+              <p-multiSelect [options]="tags" formControlName="tags"
+                styleClass="bg-gray-50  border border-gray-300 text-gray-900 h-[38px] dark:bg-gray-700 dark:border-gray-600  dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  text-sm w-full rounded-r-none "
+                placeholder="Select Tags" [showClear]="true"></p-multiSelect>
+
+              <span><button type="button"
+                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g id="Edit / Add_Plus">
+                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  New
+                </button></span>
+            </div>
+
+
+
+
+          </div>
+
+          <div class=" sm:col-span-2">
+            <label for="description"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+            <textarea id="description" rows="8" formControlName="description"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Your description here"></textarea>
+          </div>
+        </div>
+        <button type="submit"
+          class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+          Save product
+        </button>
+      </form>
+    </div>
+  </div>
+  <p-confirmDialog [style]="{ width: '50vw' }" key="positionDialog" [position]="position"
+    acceptButtonStyleClass="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 mx-4"
+    rejectButtonStyleClass="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-orange-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"></p-confirmDialog>
+  <!-- <div class="flex flex-wrap justify-content-center gap-2">
+    <p-button (click)="confirmPosition('top')" icon="pi pi-arrow-right" label="Left"
+      styleClass="p-button-help"></p-button>
+  </div> -->
+
+  <!-- </section> -->

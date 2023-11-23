@@ -1,0 +1,27 @@
+<div class="flex flex-col ">
+  <p-fileUpload #fileUpload
+    styleClass="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    name="files" url="http://localhost:5005/api/images/upload/655e29a4dd41906e7e85e84e" [multiple]="true"
+    accept="image/*" buttonStyleClass="bg-red-900" [showUploadButton]="false" [showCancelButton]="false"
+    (onSelect)="onFileUpload($event)" (onRemove)="onRemove($event)">
+    <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFiles.length">
+        <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+      </ul>
+    </ng-template>
+  </p-fileUpload>
+
+  <div class="flex flex-row justify-items-center items-center space-x-2 mt-2 ml-auto mr-4">
+    <button (click)="onSave()"
+      class="px-5 py-2.5 text-sm font-medium text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+      type="button">
+      Save
+    </button>
+    <button
+      class="px-5 py-2.5 text-sm font-medium text-white bg-orange-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+      type="button">
+      Cancel
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div style="display: block;">
+  <div class="flex flex-row w-full justify-around ">
+    <button
+      class=" text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:text-blue-400 mb-2">
+      1 Day
+    </button>
+    <button
+      class=" text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:text-blue-400 mb-2">
+      1 Week
+    </button>
+    <button
+      class=" text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:text-blue-400 mb-2">
+      1 Month
+    </button>
+    <button
+      class="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:text-blue-400 mb-2">
+      1 Year
+    </button>
+    <button
+      class=" text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:text-blue-400 mb-2">
+      1 Max
+    </button>
+  </div>
+
+  <canvas class="h-[1000px] w-[300px]" baseChart [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas>
+</div>

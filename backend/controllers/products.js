@@ -1,4 +1,5 @@
 const Product = require("../models/products");
+const slugify = require("slugify");
 
 // const getAllProducts = async (req, res) => {
 //   const { featured, company, name, sort, fields, numericFilters } = req.query;
@@ -70,11 +71,26 @@ const getAllProducts = async (req, res) => {
 const createProduct = async (req, res) => {
   try {
     console.log(req.body);
+    let reqProduct = req.body;
+    const slug = slugify(reqProduct.title, { lower: true });
+    const uniqueSlug = `${slug}-${Date.now()}`;
+    reqProduct["slug"] = uniqueSlug;
     const product = await Product.create(req.body);
+
     res.status(201).json(product);
     console.log(product);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    // console.log(err)
+    if (error.code === 11000) {
+      const duplicatedKey = Object.keys(error.keyPattern)[0];
+
+      const existingProduct = await Product.findOne({
+        [duplicatedKey]: req.body[duplicatedKey],
+      });
+
+      return res.status(409).json(existingProduct);
+    }
+    res.status(500).json({ error: error.message });
   }
 };
 const getProduct = async (req, res) => {

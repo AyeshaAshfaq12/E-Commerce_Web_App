@@ -16,6 +16,7 @@ require("./middleware/authorization");
 const usersRouter = require("./routes/users");
 const imagesRouter = require("./routes/images");
 const productsRouter = require("./routes/products");
+const categoryRouter = require("./routes/category");
 
 //Middleware
 app.use(express.json());
@@ -64,6 +65,9 @@ app.use("/api/images", imagesRouter);
 
 //products
 app.use("/api", productsRouter);
+
+//category
+app.use("/api", categoryRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

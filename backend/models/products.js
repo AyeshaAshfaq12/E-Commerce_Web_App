@@ -58,8 +58,8 @@ const productSchema = new mongoose.Schema(
       },
     ],
     Category: {
-      type: Object,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     },
     tags: [
       {
@@ -99,6 +99,7 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+productSchema.index({ SKU: 1 }, { unique: true });
 
 const Product = mongoose.model("Product", productSchema);
 

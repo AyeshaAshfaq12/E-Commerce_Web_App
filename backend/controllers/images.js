@@ -3,33 +3,38 @@ const fs = require("fs");
 const Image = require("../models/images");
 const path = require("path");
 exports.uploadImage = async (req, res) => {
-  console.log("product_id");
-
   try {
     const { id } = req.params;
-    console.log(id);
-    console.log("I am product_id");
-    const newImage = new Image({
-      name: req.body.name,
-      image: {
-        data: fs.readFileSync(
-          path.join(__dirname, "..", "public", "Images", req.file.filename)
-        ),
-        contentType: "image/png",
-      }, //different
-    });
+    console.log(req.body);
 
-    const savedImage = await newImage.save();
-    console.log(savedImage);
+    const savedImages = [];
+
+    // Loop through the array of files
+    for (const file of req.files) {
+      const newImage = new Image({
+        name: req.body.name, // You might want to customize this based on your needs
+        image: {
+          data: fs.readFileSync(
+            path.join(__dirname, "..", "public", "Images", file.filename)
+          ),
+          contentType: "image/png",
+        },
+      });
+
+      const savedImage = await newImage.save();
+      savedImages.push(savedImage._id);
+    }
 
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
-      { $push: { images: savedImage._id } },
+      { $push: { images: { $each: savedImages } } },
       { new: true }
     );
+    console.log(req.body);
+    console.log("req.body SUbhan");
 
     res.json({
-      message: "Image uploaded successfully",
+      message: "Images uploaded successfully",
       product: updatedProduct,
     });
   } catch (error) {

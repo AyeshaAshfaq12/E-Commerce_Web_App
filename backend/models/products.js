@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const category = require("../models/images");
-
 const productSchema = new mongoose.Schema(
   {
     SKU: {
@@ -31,7 +30,7 @@ const productSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["Active", "Inactive", "Out of Stock"],
-      default: "active",
+      default: "Active",
     },
     currentStock: {
       type: Number,

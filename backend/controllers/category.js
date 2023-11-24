@@ -15,6 +15,7 @@ const createCategory = async (req, res) => {
     res.status(201).json(category);
     console.log(category);
   } catch (err) {
+    logger.error(`Error: ${error}`);
     res.status(500).json({ error: err.message });
   }
 };

@@ -7,12 +7,16 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers/products");
+const {
+  validateToken,
+  requireRoles,
+} = require("../middleware/authorization.js");
 
 router.route("/products").get(getAllProducts).post(createProduct);
 router
   .route("/products/:id")
-  .get(getProduct)
-  .put(updateProduct)
+  .get(validateToken, requireRoles(["Admin", "Store Operator"]), getProduct)
+  .put(validateToken, requireRoles(["Admin", "Store Operator"]), updateProduct)
   .delete(deleteProduct);
 
 module.exports = router;

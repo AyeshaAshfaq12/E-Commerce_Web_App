@@ -1,6 +1,7 @@
 <ol
-  class="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
-  <li [class.dark:text-white.text-white]="currentStep !== 1" class="flex items-center text-blue-600 dark:text-blue-500">
+  class="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+  <li [class.text-black.text-black.dark:text-white.text-white]="currentStep !== 1"
+    class="flex items-center text-blue-600 dark:text-blue-500">
     <span [class.border-blue-500]="currentStep === 1"
       class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ">
       1
@@ -12,8 +13,9 @@
         d="m7 9 4-4-4-4M1 9l4-4-4-4" />
     </svg>
   </li>
-  <li [class.dark:text-white.text-white]="currentStep !== 2" class="flex items-center text-blue-600 dark:text-blue-500">
-    <span [class.border-blue-500]="currentStep === 2"
+  <li [class.text-black.text-black.dark:text-white.text-white]="currentStep !== 2"
+    class="flex items-center text-blue-600 dark:text-blue-500">
+    <span [class.border-blue-500]="currentStep == 2"
       class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ">
       2
     </span>

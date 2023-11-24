@@ -116,6 +116,7 @@ import { MessageService } from 'primeng/api';
 import { CreateProductStepOneComponent } from './components/admin/create-product-step-one/create-product-step-one.component';
 import { CreateProductStepTwoComponent } from './components/admin/create-product-step-two/create-product-step-two.component';
 import { ConfirmationService } from 'primeng/api';
+import { ProductBodyComponent } from './components/admin/product-body/product-body.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,6 +131,7 @@ import { ConfirmationService } from 'primeng/api';
     CreateProductComponent,
     CreateProductStepOneComponent,
     CreateProductStepTwoComponent,
+    ProductBodyComponent,
   ],
   imports: [
     CdkStepperModule,

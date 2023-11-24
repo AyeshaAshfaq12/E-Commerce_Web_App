@@ -4,8 +4,8 @@
       <form autocomplete="off" [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <div class="sm:col-span-2">
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SKU</label>
-            <input type="text" formControlName="SKU" name="name" id="name"
+            <label for="sku" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SKU</label>
+            <input type="text" formControlName="SKU" name="sku" id="sku"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="SKU Number" required="">
           </div>
@@ -34,42 +34,31 @@
           </div>
 
           <div class="w-full">
-            <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+            <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
             <input type="number" formControlName="currentStock" min="1" name="stock" id="stock"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="999" required="">
           </div>
           <div class="w-full">
             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-            <div class="p-inputgroup">
-              <p-dropdown [options]="brands" formControlName="brand"
-                styleClass="bg-gray-50  rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
-                placeholder="Select a brand" [editable]="true"></p-dropdown>
-              <span><button type="button"
-                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
-                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <g id="Edit / Add_Plus">
-                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round"></path>
-                      </g>
-                    </g>
-                  </svg>
-                  New
-                </button></span>
+            <div class="p-inputgroup text-white">
+              <p-dropdown [options]="brands" formControlName="brand" placeholder="Select a brand"
+                [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
+                [editable]="true"></p-dropdown>
+
             </div>
           </div>
-          <div>
 
+
+          <div>
             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
             <div class="p-inputgroup">
-              <p-dropdown [options]="categoriesName" formControlName="category"
-                styleClass="bg-gray-50 rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
+              <p-dropdown [options]="categoriesName" formControlName="Category"
+                [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
                 placeholder="Select a category" [editable]="true"></p-dropdown>
-              <span><button type="button"
-                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+              <span><button type="button" (click)="newCategory()"
+                  [style]="{'border-radius': '0px',' ': '0.5rem','border-bottom-right-radius': '0.5rem','border-top-right-radius': '0.5rem'}"
+                  class="min-h-[40px] h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
                   <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -83,40 +72,101 @@
                   New
                 </button></span>
             </div>
-
           </div>
 
           <div>
             <label for="Status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
             <div class="p-inputgroup">
               <p-dropdown [options]="statuses" formControlName="status"
-                styleClass="bg-gray-50  rounded-r-none border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 p-2 text-sm w-full"
+                [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
                 placeholder="Select a status" [editable]="true"></p-dropdown>
-              <span><button type="button"
-                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
-                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <g id="Edit / Add_Plus">
-                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round"></path>
-                      </g>
-                    </g>
-                  </svg>
-                  New
-                </button></span>
+
             </div>
           </div>
+          <!-- <app-create-category></app-create-category> -->
+          <div class="sm:col-span-2 border p-4" *ngIf="showNewCategory==true">
+            <form autocomplete="off" [formGroup]="categoryForm" (ngSubmit)="onSubmitCat()">
+              <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="sm:col-span-2">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                  <input type="text" formControlName="name" name="name" id="name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Name" required="">
+                </div>
+
+
+                <div class="sm:col-span-2">
+                  <label for="parentCategory"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Parent
+                    Category</label>
+                  <div class="p-inputgroup">
+                    <p-dropdown [options]="categoriesName" formControlName="parentCategory"
+                      [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
+                      placeholder="Select a Parent Category" [editable]="true"></p-dropdown>
+
+                  </div>
+
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="subcategories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub
+                    Categories</label>
+                  <div class="p-inputgroup">
+                    <p-multiSelect [options]="categoriesName" formControlName="subcategories"
+                      [style]="{'maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent' ,'color':'black' }"
+                      placeholder="Select Sub-Categories" [showClear]="true"></p-multiSelect>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+              <div *ngIf="categoryForm.get('name')?.invalid"
+                class="mt-5 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">Ensure that these requirements are met:</span>
+                  <ul class="mt-1.5 list-disc list-inside">
+                    <li *ngIf="categoryForm.get('name')?.invalid">A valid title is required</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex flex-row justify-between">
+                <button type="submit"
+                  class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                  Save Category
+                </button>
+                <button (click)="closeCategory()"
+                  class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                  Cancel
+                </button>
+              </div>
+
+            </form>
+          </div>
+          <!-- End -->
+
+
           <div class="sm:col-span-2">
             <label for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
-            <div class="p-inputgroup">
-              <p-multiSelect [options]="tags" formControlName="tags"
-                styleClass="bg-gray-50  border border-gray-300 text-gray-900 h-[38px] dark:bg-gray-700 dark:border-gray-600  dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  text-sm w-full rounded-r-none "
-                placeholder="Select Tags" [showClear]="true"></p-multiSelect>
-
-              <span><button type="button"
-                  class="h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+            <div class="grid grid-cols-5 ">
+              <div class="col-span-4">
+                <p-multiSelect [options]="tags" formControlName="tags"
+                  [style]="{'maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent' ,'color':'black' }"
+                  placeholder="Select Tags" [showClear]="true"></p-multiSelect>
+              </div>
+              <div class="col-span-1">
+                <button type="button" (click)="newTag()"
+                  [style]="{'border-radius': '0px',' ': '0.5rem','border-bottom-right-radius': '0.5rem','border-top-right-radius': '0.5rem'}"
+                  class="min-h-[40px] h-[38px]  inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
                   <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -128,9 +178,56 @@
                     </g>
                   </svg>
                   New
-                </button></span>
+                </button>
+              </div>
             </div>
+            <!-- New tag -->
+            <div class="sm:col-span-2 border p-4 mt-4" *ngIf="showNewTag==true">
+              <form autocomplete="off" [formGroup]="tagForm" (ngSubmit)="onSubmitTag()">
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                  <div class="sm:col-span-2">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" formControlName="name" name="name" id="name"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      placeholder="Name" required="">
+                  </div>
 
+
+
+
+
+                </div>
+
+                <div *ngIf="tagForm.get('name')?.invalid"
+                  class="mt-5 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                  role="alert">
+                  <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                  </svg>
+                  <span class="sr-only">Danger</span>
+                  <div>
+                    <span class="font-medium">Ensure that these requirements are met:</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                      <li *ngIf="tagForm.get('name')?.invalid">A valid tag Name is required</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-row justify-between">
+                  <button type="submit"
+                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    Save Tag
+                  </button>
+                  <button (click)="closeTag()"
+                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    Cancel
+                  </button>
+                </div>
+
+              </form>
+            </div>
+            <!-- End -->
 
 
 
@@ -144,6 +241,32 @@
               placeholder="Your description here"></textarea>
           </div>
         </div>
+
+        <div *ngIf="invalidCount > 0"
+          class="mt-5 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-1.5 list-disc list-inside">
+              <li *ngIf="productForm.get('title')?.invalid">A valid product title is required</li>
+              <li *ngIf="productForm.get('price')?.invalid">A valid product price is required</li>
+              <li *ngIf="productForm.get('discount')?.invalid">A valid product discount is required</li>
+              <li *ngIf="productForm.get('currentStock')?.invalid">A valid product quantity is required</li>
+              <li *ngIf="productForm.get('brand')?.invalid">A valid product brand is required</li>
+              <li *ngIf="productForm.get('Category')?.invalid">A valid product category is required</li>
+              <li *ngIf="productForm.get('status')?.invalid">A valid product status is required</li>
+              <li *ngIf="productForm.get('tags')?.invalid">Valid product tags is required</li>
+              <li *ngIf="productForm.get('description')?.invalid">A valid product description is required</li>
+            </ul>
+          </div>
+        </div>
+
         <button type="submit"
           class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
           Save product
@@ -151,9 +274,11 @@
       </form>
     </div>
   </div>
+
   <p-confirmDialog [style]="{ width: '50vw' }" key="positionDialog" [position]="position"
     acceptButtonStyleClass="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 mx-4"
     rejectButtonStyleClass="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-orange-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"></p-confirmDialog>
+
   <!-- <div class="flex flex-wrap justify-content-center gap-2">
     <p-button (click)="confirmPosition('top')" icon="pi pi-arrow-right" label="Left"
       styleClass="p-button-help"></p-button>

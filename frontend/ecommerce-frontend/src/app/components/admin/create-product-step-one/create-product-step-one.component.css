@@ -1,4 +1,11 @@
-.p-button
-{
+.p-button {
   background-color: red;
+}
+:host::ng-deep .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item,
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group {
+  background: lightgreen;
+}
+:host::ng-deep .ui-inputtext {
+  background: lightskyblue;
+  border-top-right-radius: 0.5rem;
 }

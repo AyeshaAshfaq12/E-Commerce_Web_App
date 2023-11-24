@@ -28,9 +28,13 @@ export class CreateProductStepOneComponent {
   categoriesName: String[] | undefined;
   @Output() nextClicked = new EventEmitter<void>();
   productForm: FormGroup;
+  categoryForm: FormGroup;
+  tagForm: FormGroup;
   product: any;
   productError: String = '';
   position: string = 'top';
+  showNewCategory: boolean = false;
+  showNewTag: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,13 +50,21 @@ export class CreateProductStepOneComponent {
       discount: new FormControl(5, Validators.required),
       currentStock: new FormControl(100, Validators.required),
       brand: new FormControl('ABC', Validators.required),
-      category: new FormControl('XYZ', Validators.required),
+      Category: new FormControl('Electronics', Validators.required),
       status: new FormControl('Active', Validators.required),
       tags: new FormControl(this.tags, Validators.required),
       description: new FormControl(
         'Ea non laborum laborum eu in incididunt sint commodo amet. Excepteur minim consequat cillum dolore occaecat ex laborum laborum dolore ipsum tempor sit. In officia aute minim aute sunt id culpa ullamco tempor. Nulla Lorem pariatur laboris anim fugiat.',
         Validators.required
       ),
+    });
+    this.categoryForm = this.formBuilder.group({
+      name: new FormControl('', [Validators.required]),
+      parentCategory: new FormControl(''),
+      subcategories: new FormControl(''),
+    });
+    this.tagForm = this.formBuilder.group({
+      name: new FormControl('', [Validators.required]),
     });
   }
 
@@ -99,18 +111,53 @@ export class CreateProductStepOneComponent {
   }
 
   ngOnInit() {
-    this.tags = ['Tech and Life Style', 'T2'];
-    this.statuses = ['Active', 'InActive', 'Out of Stock', 'S1'];
-    this.categoriesName = ['C1', 'c2'];
-    this.brands = ['B1', 'b2'];
+    this.statuses = ['Active', 'In Active', 'Out of Stock'];
+    this.tags = [];
+    // this.brands = ['B1', 'b2'];
     // this.imageInfos = this.uploadService.getFiles();
     this.loadCategories();
+    this.loadBrands();
+    this.loadTags();
+  }
+
+  get invalidCount(): number {
+    let errorCount = 0;
+
+    if (this.productForm.invalid) {
+      // Iterate through each form control to check its validity and count the invalid ones
+      Object.keys(this.productForm.controls).forEach((field) => {
+        const control = this.productForm.get(field);
+
+        if (control?.invalid) {
+          errorCount += 1;
+        }
+      });
+    }
+
+    return errorCount;
+  }
+  get invalidCountNewCat(): number {
+    let errorCount = 0;
+
+    if (this.categoryForm.invalid) {
+      // Iterate through each form control to check its validity and count the invalid ones
+      Object.keys(this.categoryForm.controls).forEach((field) => {
+        const control = this.categoryForm.get(field);
+
+        if (control?.invalid) {
+          errorCount += 1;
+        }
+      });
+    }
+
+    return errorCount;
   }
   onSubmit() {
     if (this.productForm.invalid) {
       return;
     }
     let product = this.updateProductData();
+    alert(JSON.stringify(product));
     this.productService.createProduct(product).subscribe(
       (response) => {
         console.log(response);
@@ -135,6 +182,36 @@ export class CreateProductStepOneComponent {
       }
     );
   }
+  onSubmitCat() {
+    if (this.categoryForm.invalid) {
+      return;
+    }
+    let category = this.categoryForm.getRawValue();
+    this.categoryService.createCategory(category).subscribe(
+      (response) => {
+        console.log(response);
+
+        this.showNewCategory = false;
+        this.categories.push(response);
+        this.categoriesName?.push(category.name);
+        this.categoryForm.reset();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  onSubmitTag() {
+    // alert('y');
+    if (this.tagForm.invalid) {
+      return;
+    }
+    let tag = this.tagForm.getRawValue();
+
+    this.showNewTag = false;
+    this.tags?.push(tag.name);
+    this.tagForm.reset();
+  }
   loadCategories() {
     this.categoryService.getCategories().subscribe(
       (response) => {
@@ -149,22 +226,50 @@ export class CreateProductStepOneComponent {
       }
     );
   }
+  loadBrands() {
+    this.productService.getBrands().subscribe(
+      (response) => {
+        this.brands = response;
+        // this.categoriesName = response.map((brand: any) => ({
+        //   label: brand,
+        //   value: brand,
+        // }));
+      },
+      (error) => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
+  loadTags() {
+    this.productService.getTags().subscribe(
+      (response) => {
+        this.tags = response;
+        // this.categoriesName = response.map((tag: any) => ({
+        //   label: tag,
+        //   value: tag,
+        // }));
+      },
+      (error) => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
 
   updateProductData() {
     let product = this.productForm.getRawValue();
 
     console.error(product);
-    const categoryFormControl = this.productForm.get('category');
+    const categoryFormControl = this.productForm.get('Category');
 
     const selectedCategory = this.categories.find(
       (category: { name: any }) => category.name === categoryFormControl?.value
     );
 
     const idValue = selectedCategory?._id;
-    if (product && product.category) {
-      product.category = idValue;
+    if (product && product.Category) {
+      product.Category = idValue;
     }
-    product['details'] = {};
+    product['details'] = { brand: product.brand };
     product['priceHistory'] = [
       {
         price: product.price,
@@ -177,5 +282,23 @@ export class CreateProductStepOneComponent {
 
   onNextClick() {
     this.nextClicked.emit();
+  }
+  newCategory() {
+    this.showNewCategory = true;
+    // alert(this.showNewCategory);
+  }
+  closeCategory() {
+    this.showNewCategory = false;
+    this.categoryForm.reset;
+    // alert(this.showNewCategory);
+  }
+  newTag() {
+    this.showNewTag = true;
+    // alert(this.showNewCategory);
+  }
+  closeTag() {
+    this.showNewTag = false;
+    this.tagForm.reset;
+    // alert(this.showNewCategory);
   }
 }

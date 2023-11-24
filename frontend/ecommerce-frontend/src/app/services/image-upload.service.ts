@@ -25,4 +25,8 @@ export class ImageUploadService {
       headers,
     });
   }
+  bufferToImage(buffer: ArrayBuffer, mimeType: string): string {
+    const base64Image = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+    return `data:${mimeType};base64,${base64Image}`;
+  }
 }

@@ -5,25 +5,24 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guard/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { unauthGuard } from './guard/unauth.guard';
+import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate:[unauthGuard]
+    canActivate: [unauthGuard],
   },
-    {
+  {
     path: 'home',
-    component: HomeComponent,
-    canActivate:[AuthGuard]
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
   },
 
-    { path: '**', redirectTo: '/login'},
+  { path: '**', redirectTo: '/login' },
 ];
 
-
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes),BrowserModule],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), BrowserModule],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

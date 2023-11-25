@@ -23,5 +23,7 @@
   </li>
 </ol>
 <!-- Your ngIf conditions for steps -->
-<app-create-product-step-one (nextClicked)="nextStep()" *ngIf="currentStep == 1"></app-create-product-step-one>
-<app-create-product-step-two (nextClicked)="nextStep()" *ngIf="currentStep == 2"></app-create-product-step-two>
+<app-create-product-step-one [product]="product" (nextClicked)="nextStep($event)"
+  *ngIf="currentStep == 1"></app-create-product-step-one>
+<app-create-product-step-two (nextClicked)="nextStep($event)" [id]="_id"
+  *ngIf="currentStep == 2"></app-create-product-step-two>

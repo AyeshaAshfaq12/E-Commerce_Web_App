@@ -14,7 +14,7 @@ export class ImageUploadService {
   uploadImages(id: String, files: File[]): Observable<any> {
     const formData = new FormData();
     formData.append('name', 'a.png');
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0; i < 4; i++) {
       formData.append('files', files[i]);
     }
 

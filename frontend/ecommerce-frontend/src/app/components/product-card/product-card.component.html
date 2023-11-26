@@ -1,7 +1,9 @@
-<div
-  class="w-full font-primary max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-  <a href="#">
-    <img class="p-8 rounded-t-lg" src="product.imageSrc" alt={{product.title}} />
+<div (click)="onClick()"
+  class="max-w-xs mx-auto place-self-center bg-white border border-gray-200 rounded-lg shadow-lg   dark:bg-gray-800 dark:border-gray-700">
+  <a [routerLink]="'/products/' + product?._id">
+    <img class=" block fixed-size-image"
+      [src]="product.images && product.images.length > 0 ? product.images[0].url : './assets/Images/elementor-placeholder-image.webp'"
+      alt={{product.title}} />
   </a>
   <div class="px-5 pb-5">
     <a href="#">
@@ -42,12 +44,13 @@
 
     <div class="flex items-center justify-between">
       <div>
-        <span class="text-lg font-medium text-gray-400 line-through dark:text-gray-300 mr-1">$109</span><span
-          class="text-3xl font-bold text-gray-900 dark:text-white">$79</span>
+        <span class="text-sm font-medium text-gray-400 line-through dark:text-gray-300 mr-4">
+          {{product.discountedPrice}}</span><span class="text-xl font-bold text-gray-900 dark:text-white">Rs.
+          {{product.price}}</span>
       </div>
 
-      <a href="#"
+      <!-- <a href="#"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</a>
+    </div> -->
     </div>
   </div>
-</div>

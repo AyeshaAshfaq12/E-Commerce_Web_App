@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -7,5 +9,14 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductCardComponent {
   @Input() product: any;
-  constructor() {}
+  // constructor() {}
+  constructor(private router: Router, private productService: ProductService) {}
+  ngOnInit() {
+    this.product = this.productService.initProductCust(this.product);
+  }
+  onClick() {
+    if (this.product._id) {
+      this.router.navigate(['/product', this.product._id]);
+    }
+  }
 }

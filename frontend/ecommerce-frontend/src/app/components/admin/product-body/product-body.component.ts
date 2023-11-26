@@ -53,16 +53,6 @@ export class ProductBodyComponent {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         });
         pro['price'] = pro.priceHistory[0].price;
-        // if (pro && pro.images && pro.images.length > 0 && pro.images[0]) {
-        //   // Check if pro.images[0].buffer and pro.images[0].data exist
-        //   if (pro.images[0].image.data.data) {
-        //     pro['imageSrc'] = this.imageService.bufferToImage(
-        //       pro.images[0].image.data.data,
-        //       pro.images[0].image.contentType
-        //     );
-        //     // alert(pro['imageSrc']);
-        //   }
-        // }
       });
     });
   }

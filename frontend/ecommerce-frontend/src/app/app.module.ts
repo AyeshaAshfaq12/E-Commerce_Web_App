@@ -118,6 +118,9 @@ import { CreateProductStepTwoComponent } from './components/admin/create-product
 import { ConfirmationService } from 'primeng/api';
 import { ProductBodyComponent } from './components/admin/product-body/product-body.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { CustomerHeaderComponent } from './components/customer-header/customer-header.component';
+import { ProductCartComponent } from './components/product-cart/product-cart.component';
+import { ProductWishlistComponent } from './components/product-wishlist/product-wishlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,6 +137,9 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     CreateProductStepTwoComponent,
     ProductBodyComponent,
     ProductPageComponent,
+    CustomerHeaderComponent,
+    ProductCartComponent,
+    ProductWishlistComponent,
   ],
   imports: [
     CdkStepperModule,

@@ -19,3 +19,8 @@ body .p-component {
   margin: 0;
   font-family: "poppins";
 }
+.fixed-size-image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover; /* or object-fit: contain; depending on your preference */
+}

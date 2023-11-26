@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { unauthGuard } from './guard/unauth.guard';
 import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ProductWishlistComponent } from './components/product-wishlist/product-wishlist.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -23,8 +24,17 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
   },
-
-  { path: '**', redirectTo: '/login' },
+  {
+    path: 'product/:id',
+    component: ProductPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'wishlist',
+    component: ProductWishlistComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

@@ -19,6 +19,32 @@ export class ProductService {
     console.log(product);
     return this.http.post(`${this.apiUrl}/products`, product);
   }
+  initProductCust(pro: Product) {
+    pro.priceHistory.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+    pro['price'] = pro.priceHistory[0].price;
+    pro['discountedPrice'] =
+      pro.priceHistory[0].price -
+      (pro.priceHistory[0].price * pro.priceHistory[0].discount) / 100;
+    pro['status'] = (pro.status = 'Active') ? 'In Stock' : pro.status;
+    pro.reviews.forEach((element) => {
+      const dateToFormat: Date = new Date(element.date);
+
+      const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+      };
+
+      const formattedDate: string = dateToFormat.toLocaleDateString(
+        'en-US',
+        options
+      );
+    });
+    return pro;
+  }
   updateProduct(id: string, product: any): Observable<any> {
     console.log(product);
     return this.http.put(`${this.apiUrl}/products/${id}`, product);

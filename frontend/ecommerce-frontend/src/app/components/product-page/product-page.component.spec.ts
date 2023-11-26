@@ -8,7 +8,7 @@ describe('ProductPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProductPageComponent]
+      declarations: [ProductPageComponent],
     });
     fixture = TestBed.createComponent(ProductPageComponent);
     component = fixture.componentInstance;

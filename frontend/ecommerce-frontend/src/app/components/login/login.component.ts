@@ -77,6 +77,8 @@ export class LoginComponent {
     this.authService.loginUser(email, password).subscribe(
       (response) => {
         localStorage.setItem('authToken', response.token);
+        localStorage.setItem('userId', response.userId);
+        localStorage.setItem('role', response.role);
         this.appService.setUserLoggedIn(true);
         this.router.navigate([this.returnUrl]);
       },

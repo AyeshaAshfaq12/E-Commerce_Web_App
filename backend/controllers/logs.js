@@ -1,4 +1,4 @@
-const LogModel = require("../models/audit-logs");
+const LogModel = require("../models/logs");
 const logger = require("../database/logger");
 const logToDatabase = async (action, objectType, objectId, details, user) => {
   const logEntry = new LogModel({

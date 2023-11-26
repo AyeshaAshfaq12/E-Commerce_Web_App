@@ -5,7 +5,7 @@ const { comparePasswords, hashPassword } = require("../utils/helper");
 const jwt = require("jsonwebtoken");
 const GenerateToken = (user) => {
   const payload = { id: user._id, role: user.role };
-  const token = jwt.sign(payload, process.env.SECRET, { expiresIn: 6000 });
+  const token = jwt.sign(payload, process.env.SECRET, { expiresIn: 60000 });
   return token;
 };
 

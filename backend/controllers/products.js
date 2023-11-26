@@ -6,8 +6,18 @@ const logger = require("../database/logger");
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find().populate("Category");
+    const products = await Product.find()
+      .populate({
+        path: "Category",
+        model: "Category", // replace with the actual model name for Category
+      })
+      .populate({
+        path: "images",
+        options: { limit: 1 }, // limit the number of populated images to 1
+      });
+
     res.status(200).json(products);
+    console.log(products);
   } catch (err) {
     logger.error(`Error: ${err}`);
 
@@ -53,7 +63,15 @@ const createProduct = async (req, res) => {
 const getProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findById({ _id: id });
+    const product = await Product.findById({ _id: id })
+      .populate({
+        path: "Category",
+        model: "Category", // replace with the actual model name for Category
+      })
+      .populate({
+        path: "images",
+        options: { limit: 1 }, // limit the number of populated images to 1
+      });
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
@@ -105,11 +123,11 @@ const updateProduct = async (req, res) => {
       console.log(originalProduct);
     }
   } catch (err) {
-    logger.info({
-      message: "This is an information log",
-      userId: req.user.id, // shorthand for userId: userId
-      // any other properties you want to include in this specific log entry
-    });
+    // logger.info({
+    //   message: "This is an information log",
+    //   userId: req.user.id, // shorthand for userId: userId
+    //   // any other properties you want to include in this specific log entry
+    // });
     logger.error(`Error: ${err}`, { userId: req.user.id });
     res.status(500).json({ error: err.message });
   }
@@ -144,10 +162,148 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const getAllBrands = async (req, res) => {
+  try {
+    const brands = await Product.distinct("details.brand");
+    res.status(200).json(brands);
+  } catch (error) {
+    console.error("Error fetching brands:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+    logger.error(`Error: ${error}`);
+  }
+};
+
+const getAllTags = async (req, res) => {
+  try {
+    console.log("yes Subhan");
+    const tags = await Product.distinct("tags");
+    res.status(200).json(tags);
+  } catch (error) {
+    console.error("Error fetching tags:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+    console.log("no Subhan");
+    logger.error(`Error: ${error}`);
+  }
+};
+
+const updateStock = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { newStock } = req.body;
+    const changedFields = {};
+
+    const existingProduct = await Product.findById(id);
+
+    if (!existingProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    changedFields["stock"] = {
+      oldValue: existingProduct.currentStock,
+      newValue: (existingProduct.currentStock += newStock),
+      status: "updated",
+    };
+
+    var dateTime = Date.now();
+    existingProduct.inventoryHistory.push({
+      stock: newStock,
+      date: dateTime,
+    });
+    changedFields["inventoryHistory"] = {
+      newValue: {
+        stock: newStock,
+        date: dateTime,
+      },
+      status: "new",
+    };
+
+    const updatedProduct = await existingProduct.save();
+
+    // Log the stock update action
+    await logToDatabase(
+      "Update Stock",
+      "product",
+      updatedProduct._id,
+      changedFields,
+      req.user.id
+    );
+
+    return res.status(200).json(updatedProduct);
+  } catch (error) {
+    logger.error(`Error: ${error}`);
+
+    console.error(`Error updating stock: ${error}`);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const updatePrice = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { newPrice, newDiscount } = req.body;
+    const existingProduct = await Product.findById(id);
+    const changedFields = {};
+
+    if (!existingProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    const isPriceDiscountChanged =
+      existingProduct.priceHistory.length === 0 ||
+      existingProduct.priceHistory[0].price !== newPrice ||
+      existingProduct.priceHistory[0].discount !== newDiscount;
+    if (newPrice) {
+      changedFields["price"] = {
+        oldValue: existingProduct.priceHistory[0].price,
+        newValue: newPrice,
+        status: "updated",
+      };
+    }
+
+    if (newDiscount) {
+      changedFields["discount"] = {
+        oldValue: existingProduct.priceHistory[0].discount,
+        newValue: newDiscount,
+        status: "updated",
+      };
+    }
+    if ((newPrice || newDiscount) && isPriceDiscountChanged) {
+      existingProduct.priceHistory.unshift({
+        price: newPrice ?? existingProduct.priceHistory[0].price,
+        discount: newDiscount ?? existingProduct.priceHistory[0].discount,
+        date: Date.now(),
+      });
+      const updatedProduct = await existingProduct.save();
+      await logToDatabase(
+        "Update Price",
+        "product",
+        updatedProduct._id,
+        changedFields,
+        req.user.id
+      );
+
+      return res.status(200).json(updatedProduct);
+    } else {
+      return res.status(200).json(existingProduct);
+    }
+  } catch (error) {
+    logger.error(`Error: ${error}`);
+
+    console.error(`Error updating price: ${error}`);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   getAllProducts,
   createProduct,
   getProduct,
   updateProduct,
   deleteProduct,
+  getAllBrands,
+  getAllTags,
+  updatePrice,
+  updateStock,
 };

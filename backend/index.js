@@ -8,7 +8,6 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const app = express();
 const injectUserId = require("./middleware/winston");
-const Audit = require("mongoose-audit-log");
 
 //Database
 require("./database/connect");
@@ -16,14 +15,14 @@ require("./middleware/authorization");
 
 //Routes
 const usersRouter = require("./routes/users");
-const imagesRouter = require("./routes/images");
 const productsRouter = require("./routes/products");
 const categoryRouter = require("./routes/category");
+const imagesRouter = require("./routes/images");
 
 //Middleware
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(injectUserId);
+// app.use(injectUserId);
 // app.use(cors());
 app.use(cors({ credentials: true, origin: "http://localhost:4200" }));
 const notFoundMiddleware = require("./middleware/not-found");

@@ -7,12 +7,6 @@ const categorySchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    tags: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
     parentCategory: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",

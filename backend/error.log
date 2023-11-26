@@ -17,3 +17,79 @@
 {"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"e\" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T08:09:28.614Z"}
 {"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"e\" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T08:11:25.881Z","userId":"6548be4ae4b0bbf1e1437eb1"}
 {"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"e\" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T08:12:19.850Z","userId":"6548be4ae4b0bbf1e1437eb1"}
+{"level":"error","message":"Error: TypeError: Cannot read properties of undefined (reading 'id')","timestamp":"2023-11-24T10:58:34.268Z"}
+{"level":"error","message":"Error: ValidationError: parentCategory: Cast to ObjectId failed for value \"\" (type string) at path \"parentCategory\" because of \"BSONError\", subcategories.0: Cast to [ObjectId] failed for value \"[ '' ]\" (type string) at path \"subcategories.0\" because of \"CastError\"","timestamp":"2023-11-24T14:30:12.233Z"}
+{"level":"error","message":"Error: ReferenceError: mongoose is not defined","timestamp":"2023-11-24T14:36:03.558Z"}
+{"level":"error","message":"Error: ReferenceError: mongoose is not defined","timestamp":"2023-11-24T14:36:42.501Z"}
+{"level":"error","message":"Error: ReferenceError: mongoose is not defined","timestamp":"2023-11-24T14:37:12.033Z"}
+{"level":"error","message":"Error: ReferenceError: mongoose is not defined","timestamp":"2023-11-24T14:38:09.076Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Mobile Devices\" }","timestamp":"2023-11-24T14:42:43.836Z"}
+{"level":"error","message":"Error: ReferenceError: logToDatabase is not defined","timestamp":"2023-11-24T14:42:53.384Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Laptops\" }","timestamp":"2023-11-24T14:42:55.184Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Laptops\" }","timestamp":"2023-11-24T14:43:18.470Z"}
+{"level":"error","message":"Error: ReferenceError: logToDatabase is not defined","timestamp":"2023-11-24T14:43:37.478Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Rdars\" }","timestamp":"2023-11-24T14:44:04.667Z"}
+{"level":"error","message":"Error: TypeError: Category.toObject is not a function","timestamp":"2023-11-24T14:44:15.275Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Rdarsdh\" }","timestamp":"2023-11-24T14:44:49.771Z"}
+{"level":"error","message":"Error: TypeError: Cannot read properties of undefined (reading 'id')","timestamp":"2023-11-24T14:45:01.297Z"}
+{"level":"error","message":"Error: MongoServerError: E11000 duplicate key error collection: ecommerce.categories index: name_1 dup key: { name: \"Hello\" }","timestamp":"2023-11-24T14:45:34.380Z"}
+{"level":"error","message":"Error: TypeError: Cannot read properties of undefined (reading 'id')","timestamp":"2023-11-24T14:45:41.163Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:08:54.958Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:09:15.357Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:16:12.910Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:16:49.925Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:18:32.260Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:18:52.848Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:19:12.039Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:22:25.176Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:23:05.509Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:23:35.774Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:23:42.670Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:23:59.321Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:31:27.790Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:32:43.995Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:33:16.492Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:34:21.378Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:34:36.113Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:36:51.707Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:38:01.328Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:38:33.621Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:41:58.493Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:44:58.453Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:45:16.989Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:46:22.753Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:46:26.766Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:48:20.115Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:50:10.406Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:50:44.388Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:53:16.957Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:54:00.507Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:55:14.611Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T15:55:18.786Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:03:44.760Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:04:06.734Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:04:28.370Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:04:49.939Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:05:00.835Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:06:12.267Z"}
+{"level":"error","message":"Error: CastError: Cast to ObjectId failed for value \"{ _id: 'tags' }\" (type Object) at path \"_id\" for model \"Product\"","timestamp":"2023-11-24T16:06:19.250Z"}
+{"level":"error","message":"Error: StrictPopulateError: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2023-11-24T16:53:14.480Z"}
+{"level":"error","message":"Error: StrictPopulateError: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2023-11-24T16:53:16.797Z"}
+{"level":"error","message":"Error: ValidationError: status: `11` is not a valid enum value for path `status`.","timestamp":"2023-11-25T06:53:17.540Z"}
+{"level":"error","message":"Error: ValidationError: status: `11` is not a valid enum value for path `status`.","timestamp":"2023-11-25T06:53:20.108Z"}
+{"level":"error","message":"Error: ValidationError: status: `11` is not a valid enum value for path `status`.","timestamp":"2023-11-25T06:53:29.061Z"}
+{"level":"error","message":"Error: ValidationError: status: `11` is not a valid enum value for path `status`.","timestamp":"2023-11-25T06:53:33.184Z"}
+{"level":"error","message":"Error: ValidationError: status: `11` is not a valid enum value for path `status`.","timestamp":"2023-11-25T06:53:36.141Z"}
+{"level":"error","message":"Error: ValidationError: status: `132` is not a valid enum value for path `status`.","timestamp":"2023-11-25T07:03:16.755Z"}
+{"level":"error","message":"Error: ValidationError: status: `132` is not a valid enum value for path `status`.","timestamp":"2023-11-25T07:03:18.027Z"}
+{"level":"error","message":"Error: ValidationError: priceHistory.0.discount: Path `discount` is required.","timestamp":"2023-11-25T10:53:07.576Z"}
+{"level":"error","message":"Error: ValidationError: priceHistory.0.discount: Path `discount` is required.","timestamp":"2023-11-25T10:56:31.559Z"}
+{"level":"error","message":"Error: ValidationError: priceHistory.0.discount: Path `discount` is required.","timestamp":"2023-11-25T10:56:40.240Z"}
+{"level":"error","message":"Error: ValidationError: priceHistory.0.discount: Path `discount` is required.","timestamp":"2023-11-25T10:57:39.301Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"NaN\" (type number) at path \"currentStock\", inventoryHistory.4.stock: Path `stock` is required.","timestamp":"2023-11-25T11:35:03.370Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"NaN\" (type number) at path \"currentStock\", inventoryHistory.5.stock: Path `stock` is required.","timestamp":"2023-11-25T11:36:16.336Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"NaN\" (type number) at path \"currentStock\", inventoryHistory.6.stock: Path `stock` is required.","timestamp":"2023-11-25T11:38:11.724Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"NaN\" (type number) at path \"currentStock\", inventoryHistory.6.stock: Path `stock` is required.","timestamp":"2023-11-25T11:38:59.117Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"100[object Object]\" (type string) at path \"currentStock\", inventoryHistory.0.stock: Cast to Number failed for value \"{ quantity: 150 }\" (type Object) at path \"stock\"","timestamp":"2023-11-25T11:40:44.437Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"1300[object Object]\" (type string) at path \"currentStock\", inventoryHistory.6.stock: Cast to Number failed for value \"{ quantity: 1300 }\" (type Object) at path \"stock\"","timestamp":"2023-11-25T11:41:23.431Z"}
+{"level":"error","message":"Error: ValidationError: currentStock: Cast to Number failed for value \"1300[object Object]\" (type string) at path \"currentStock\", inventoryHistory.6.stock: Cast to Number failed for value \"{ quantity: 1300 }\" (type Object) at path \"stock\"","timestamp":"2023-11-25T11:41:25.805Z"}

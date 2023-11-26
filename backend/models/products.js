@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Active", "Inactive", "Out of Stock"],
+      enum: ["Active", "In Active", "Out of Stock"],
       default: "Active",
     },
     currentStock: {
@@ -77,7 +77,13 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
-    images: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }],
+    images: [
+      {
+        public_id: String,
+        url: String,
+      },
+    ],
+    // images: [{ type: mongoose.Schema.Types.ObjectId, ref: "Image" }],
     reviews: [
       {
         customer: {

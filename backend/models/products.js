@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Active", "In Active", "Out of Stock"],
+      enum: ["Active", "In Active", "Out of Stock", "Deleted"],
       default: "Active",
     },
     currentStock: {

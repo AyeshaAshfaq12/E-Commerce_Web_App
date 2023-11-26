@@ -17,7 +17,7 @@ router.post(
   "/upload/:id",
   validateToken,
   requireRoles(["Admin", "Store Operator"]),
-  uploadPhoto.array("images"),
+  uploadPhoto.array("files"),
   productImgResize,
   uploadImages
 );

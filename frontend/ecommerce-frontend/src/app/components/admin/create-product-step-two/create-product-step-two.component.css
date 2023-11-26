@@ -1,21 +1,17 @@
-
 :host ::ng-deep .p-fileupload .p-fileupload-buttonbar {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
-
-:host ::ng-deep .p-fileupload .p-fileupload-buttonbar  {
-      border: 1px;;
-    border-color: black;
-    display: flex;
-    flex-direction: row;
-
+:host ::ng-deep .p-fileupload .p-fileupload-buttonbar {
+  border: 1px;
+  border-color: black;
+  display: flex;
+  flex-direction: row;
 }
 
 .ui-fileupload-upload {
-  background-color: #28A745;
+  background-color: #28a745;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -23,3 +19,11 @@
   border-radius: 4px;
 }
 
+.fixed-size-image {
+  height: 200px;
+  width: 250px;
+  object-fit: cover; /* or object-fit: contain; depending on your preference */
+}
+.p-tabview-panel {
+  width: 100%;
+}

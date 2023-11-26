@@ -29,12 +29,12 @@ export class CreateProductComponent {
   currentStep: number = 1;
   maxStep: number = 2;
   ngOnInit() {
-    alert(this.product);
+    // alert(this.product);
   }
   nextStep(id: string) {
     this._id = id;
 
-    alert(id + 'sUBHSN');
+    // alert(id + 'sUBHSN');
     if (this.currentStep < this.maxStep) {
       this.currentStep += 1;
     } else {

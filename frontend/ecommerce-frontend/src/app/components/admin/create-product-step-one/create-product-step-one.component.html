@@ -35,9 +35,27 @@
 
           <div class="w-full">
             <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
-            <input type="number" formControlName="currentStock" min="1" name="stock" id="stock"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="999" required="">
+            <div class="p-inputgroup">
+
+              <input type="number" formControlName="currentStock" min="1" name="stock" id="stock"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="999" required="">
+              <span *ngIf="isEditing"><button type="button" (click)="newStock()"
+                  [style]="{'border-radius': '0px',' ': '0.5rem','border-bottom-right-radius': '0.5rem','border-top-right-radius': '0.5rem'}"
+                  class="min-h-[40px] h-[38px] inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 rounded-none">
+                  <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g id="Edit / Add_Plus">
+                        <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#989898" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  Stock
+                </button></span>
+            </div>
           </div>
           <div class="w-full">
             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
@@ -47,6 +65,47 @@
                 [editable]="true"></p-dropdown>
 
             </div>
+          </div>
+
+          <div class="sm:col-span-2 border p-4" *ngIf="showNewStock==true">
+            <form autocomplete="off" [formGroup]="stockForm" (ngSubmit)="onSubmitStock()">
+              <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="sm:col-span-2">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                  <input type="number" formControlName="quantity" min="1" name="stock" id="stock"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="999" required="">
+                </div>
+              </div>
+
+              <div *ngIf="stockForm.get('quantity')?.invalid"
+                class="mt-5 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">Ensure that these requirements are met:</span>
+                  <ul class="mt-1.5 list-disc list-inside">
+                    <li *ngIf="categoryForm.get('name')?.invalid">A valid number is required</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex flex-row justify-between">
+                <button type="submit"
+                  class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                  Add Stock
+                </button>
+                <button (click)="closeStock()"
+                  class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                  Cancel
+                </button>
+              </div>
+
+            </form>
           </div>
 
 
@@ -79,7 +138,7 @@
             <div class="p-inputgroup">
               <p-dropdown [options]="statuses" formControlName="status"
                 [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
-                placeholder="Select a status" [editable]="true"></p-dropdown>
+                placeholder="Select a status"></p-dropdown>
 
             </div>
           </div>
@@ -102,7 +161,7 @@
                   <div class="p-inputgroup">
                     <p-dropdown [options]="categoriesName" formControlName="parentCategory"
                       [style]="{'color':'white','maxHeight':'40px', 'width': '100%', 'padding-top':' 0.5rem','padding-bottom':' 0.5rem','display': 'inline-flex','align-items': 'center','border-radius': '0px',' ': '0.5rem','border-bottom-left-radius': '0.5rem','border-top-left-radius': '0.5rem', 'background-color': 'transparent'  }"
-                      placeholder="Select a Parent Category" [editable]="true"></p-dropdown>
+                      placeholder="Select a Parent Category"></p-dropdown>
 
                   </div>
 
@@ -267,10 +326,17 @@
           </div>
         </div>
 
-        <button type="submit"
-          class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-          Save product
-        </button>
+        <div class="flex flex-row justify-between">
+
+          <button type="submit"
+            class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+            Save product
+          </button>
+          <button *ngIf="isEditing" type="submit" (click)="skipNext()"
+            class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+            Skip
+          </button>
+        </div>
       </form>
     </div>
   </div>

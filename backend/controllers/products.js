@@ -6,18 +6,15 @@ const logger = require("../database/logger");
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find()
-      .populate({
-        path: "Category",
-        model: "Category", // replace with the actual model name for Category
-      })
-      .populate({
-        path: "images",
-        options: { limit: 1 }, // limit the number of populated images to 1
-      });
+    const products = await Product.find({
+      status: { $ne: "Deleted" },
+    }).populate({
+      path: "Category",
+      model: "Category", // replace with the actual model name for Category
+    });
 
     res.status(200).json(products);
-    console.log(products);
+    // console.log(products);
   } catch (err) {
     logger.error(`Error: ${err}`);
 
@@ -28,7 +25,7 @@ const getAllProducts = async (req, res) => {
 const createProduct = async (req, res) => {
   try {
     console.clear();
-    console.log(req.body);
+    // console.log(req.body);
     let reqProduct = req.body;
     const slug = slugify(reqProduct.title, { lower: true });
     const uniqueSlug = `${slug}-${Date.now()}`;
@@ -46,7 +43,7 @@ const createProduct = async (req, res) => {
     );
 
     res.status(201).json(product);
-    console.log(product);
+    // console.log(product);
   } catch (error) {
     if (error.code === 11000) {
       const duplicatedKey = Object.keys(error.keyPattern)[0];
@@ -63,15 +60,10 @@ const createProduct = async (req, res) => {
 const getProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findById({ _id: id })
-      .populate({
-        path: "Category",
-        model: "Category", // replace with the actual model name for Category
-      })
-      .populate({
-        path: "images",
-        options: { limit: 1 }, // limit the number of populated images to 1
-      });
+    const product = await Product.findById({ _id: id }).populate({
+      path: "Category",
+      model: "Category", // replace with the actual model name for Category
+    });
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
@@ -98,7 +90,7 @@ const updateProduct = async (req, res) => {
       req.body,
       Product.schema
     );
-
+    console.log(req.body);
     // Update the product only if there are changes
     if (Object.keys(changedFields).length > 0) {
       const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {

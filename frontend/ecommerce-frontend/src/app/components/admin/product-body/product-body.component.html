@@ -1,51 +1,20 @@
-<!-- <p-table [value]="products" [paginator]="true" [rows]="30"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" responsiveLayout="stack"
-  [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}" [rowsPerPageOptions]="[10, 25, 50]">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th pSortableColumn="SKU" style="width:20%">SKU <p-sortIcon field="SKU"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Name <p-sortIcon field="code"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Price <p-sortIcon field="code"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Category <p-sortIcon field="code"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Quantity <p-sortIcon field="code"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Status <p-sortIcon field="code"></p-sortIcon></th>
-      <th pSortableColumn="" style="width:20%">Reviews <p-sortIcon field="code"></p-sortIcon></th>
-
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product let-columns="columns">
-    <tr>
-      <td><span class="p-column-title">Name</span>{{product.title}}</td>
-      <td><span class="p-column-title">Price</span>{{product.priceHistory[0].priceHistory[0].price | currency:'PKR '}}</td>
-      <td><span class="p-column-title">Category</span>{{product.Category.name}}</td>
-      <td><span class="p-column-title">Quantity</span>{{product.currentStock}}</td>
-      <td><p-tag [value]="product.status" [severity]="getSeverity(product.status)"></p-tag></td>
-      <td><span class="p-column-title">Reviews</span><p-rating [ngModel]="product.averageReview" [readonly]="true"
-          [cancel]="false"></p-rating></td>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="paginatorleft">
-    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-  </ng-template>
-</p-table> -->
-
-<div class="card">
+<div class="card font-primary">
   <p-toast></p-toast>
   <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
       <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" [style]="{'margin':'1rem'}"
-        (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+      <!-- <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" [style]="{'margin':'1rem'}"
+        (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
     </ng-template>
 
-    <ng-template pTemplate="right">
-      <!-- <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
-        class="mr-2 inline-block"></p-fileUpload> -->
+    <!-- <ng-template pTemplate="right">
+      <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
+        class="mr-2 inline-block"></p-fileUpload>
       <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
-    </ng-template>
+    </ng-template> -->
   </p-toolbar>
 
-  <p-table #dt [value]="products" [rows]="2" [paginator]="true"
+  <p-table #dt [value]="products" [rows]="10" [paginator]="true"
     [globalFilterFields]="['title', 'price', 'Category.name', 'status','averageReview']"
     [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -55,45 +24,52 @@
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Global Search" />`
-          <!-- <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Filter" /> -->
-          <!-- <input pInputText type="text" (input)="applyFilterGlobal($event.target, 'contains')"
-            placeholder="Search..." /> -->
+            placeholder=" Search" />`
         </span>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="width: 4rem">
-          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </th>
-        <th pSortableColumn="title" style="min-width:15rem">Title <p-sortIcon field="title"></p-sortIcon></th>
+
+        <th pSortableColumn="SKU" style="min-width:fit-content">SKU<p-sortIcon field="SKU"></p-sortIcon></th>
+        <th pSortableColumn="title" style="min-width:8rem">Title <p-sortIcon field="title"></p-sortIcon></th>
         <th>Image</th>
         <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-        <th pSortableColumn="Category.name" style="min-width:10rem">Category <p-sortIcon
+        <th pSortableColumn="currentStock" style="min-width:fit-content">Stock <p-sortIcon field="currentStock"
+            style="min-width:fit-content"></p-sortIcon>
+        </th>
+        <th pSortableColumn="Category.name" style="min-width:fit-content">Category <p-sortIcon
             field="Category.name  "></p-sortIcon></th>
-        <th pSortableColumn="averageReview">Reviews <p-sortIcon field="averageReview"></p-sortIcon></th>
-        <th pSortableColumn="status" style="min-width:10rem">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th></th>
+        <th pSortableColumn="averageReview">Reviews <p-sortIcon field="averageReview"></p-sortIcon>
+
+        </th>
+        <th pSortableColumn="status" style="min-width:fit-content">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th class=" min-w-fit "></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" class="pop" let-product>
       <tr>
-        <td>
-          <p-tableCheckbox [value]="product"></p-tableCheckbox>
-        </td>
+
+        <td>{{ product.SKU }}</td>
         <td>{{ product.title }}</td>
-        <td><img [src]="product.imageSrc" [alt]="product.title" width="50" class="shadow-4" /></td>
+        <td><img [src]="product?.images[0]?.url" [alt]="product.title" width="50" class="shadow-4" /></td>
         <td>{{ product.priceHistory[0].price | currency: 'USD' }}</td>
-        <td>{{ product.Category.name }}</td>
-        <td><p-rating [ngModel]="product.averageReview" [readonly]="true" [cancel]="false"></p-rating></td>
+        <td>{{ product.currentStock }}</td>
+        <td>{{ product.Category?.name }}</td>
+        <td><p-rating [ngModel]="product.averageReview" [readonly]="true" [cancel]="false"></p-rating>
+          <span>({{product.averageReview}})</span>
+
+        </td>
         <td>
           <p-tag [value]="product.status" [severity]="getSeverity(product.status)"></p-tag>
         </td>
         <td>
+          <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-warning"
+            (click)="viewProduct(product)"></button>
           <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
             (click)="editProduct(product)"></button>
-          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
             (click)="deleteProduct(product)"></button>
         </td>
       </tr>
@@ -104,20 +80,30 @@
     </ng-template>
   </p-table>
 </div>
-<!-- <div *ngIf="productDialog" styleClass="p-fluid" class="z-40 top-0 fixed"> -->
-
-<!-- </div> -->
-<p-dialog [(visible)]="productDialog" [style]="{ width: '580px' }" header="Product Details" [modal]="true"
-  styleClass="p-fluid">
+<p-dialog [(visible)]="productDialog" class="w-full" header="Product Details" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content">
 
-    <app-create-product></app-create-product>
+    <app-create-product (closeClicked)="hideDialog()"></app-create-product>
   </ng-template>
 
-  <!-- <ng-template pTemplate="footer">
-    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="hideDialog()"></button>
-  </ng-template> -->
+
+</p-dialog>
+<p-dialog [(visible)]="productViewDialog" class="w-full" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <app-product-page [product]="product"></app-product-page>
+
+  </ng-template>
+
+</p-dialog>
+
+<p-dialog [(visible)]="productEditDialog" class="w-full" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <app-create-product [product]="product" (closeClicked)="hideDialog()"></app-create-product>
+
+
+  </ng-template>
+
 </p-dialog>
 
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net" modified="2023-10-07T09:01:34.494Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.27" etag="PTT7218qpzABEI7TBUah" version="22.0.0" type="device">
+  <diagram name="Page-1" id="P1MSiA9LtgT3bkhbTNA6">
+    <mxGraphModel dx="1660" dy="948" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ovKPpL-joDXknjraWkng-3" value="" style="rounded=0;whiteSpace=wrap;html=1;glass=0;fillColor=none;dashed=1;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" parent="1">
+          <mxGeometry x="157" y="10" width="923" height="810" as="geometry" />
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-5" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" edge="1" parent="1" source="ovKPpL-joDXknjraWkng-1" target="ovKPpL-joDXknjraWkng-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" edge="1" parent="1" source="ovKPpL-joDXknjraWkng-1" target="ovKPpL-joDXknjraWkng-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="218" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-11" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" connectable="0" parent="ovKPpL-joDXknjraWkng-10">
+          <mxGeometry x="-0.5051" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-13" value="/customer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" connectable="0" parent="ovKPpL-joDXknjraWkng-10">
+          <mxGeometry x="-0.5522" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-1" value="Backend" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" parent="1">
+          <mxGeometry x="167" y="30" width="103" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-4" value="MongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" parent="1">
+          <mxGeometry x="407" y="30" width="73" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" edge="1" parent="1" target="ovKPpL-joDXknjraWkng-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="167.001818181818" y="96.36363636363637" as="targetPoint" />
+            <mxPoint x="81.81999999999977" y="215.0000000000001" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="90" y="215" />
+              <mxPoint x="90" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-14" value="http request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" connectable="0" parent="ovKPpL-joDXknjraWkng-8">
+          <mxGeometry x="0.0576" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-6" value="Mobile/Web App" style="rounded=0;whiteSpace=wrap;html=1;rotation=90;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" parent="1">
+          <mxGeometry x="-1.5" y="272.5" width="177.5" height="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ovKPpL-joDXknjraWkng-9" value="Products" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Poppins;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPoppins;" vertex="1" parent="1">
+          <mxGeometry x="320" y="218" width="130" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

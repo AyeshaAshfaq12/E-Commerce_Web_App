@@ -15,18 +15,24 @@ interface Review {
   rating: number;
   date: Date;
 }
+interface ImagesToUpload {
+  image?: Images;
+  name?: string;
+  file?: File;
+}
 interface Images {
-  name: string;
-  image: Image;
-  rating: number;
-  date: Date;
+  _id?: string;
+  url: string;
+  public_id?: string;
+  // rating: number;
+  // date: Date;
 }
 interface Data {
   data: ArrayBuffer;
 }
 interface Image {
   // buffer: ArrayBuffer;
-  data: Data;
+  data: any;
   contentType: string;
 }
 interface category {
@@ -34,13 +40,20 @@ interface category {
 }
 
 interface Product {
+  _id?: string;
+  id?: string;
   SKU: string;
   title: string;
   slug?: string;
   description: string;
   details: Record<string, unknown>;
   totalReviews: number;
-  status: 'Active' | 'Inactive' | 'Out of Stock';
+  status:
+    | 'Active'
+    | 'In Active'
+    | 'Out of Stock'
+    | 'In Stock'
+    | 'Not Visible to Customers';
   currentStock: number;
   averageReview: number;
   priceHistory: PriceHistory[];
@@ -50,7 +63,18 @@ interface Product {
   images: Images[]; // Change
   reviews: Review[];
   imageSrc?: String;
-  price?: Number;
+  price?: number;
+  discountedPrice?: number;
 }
 
 export default Product;
+export {
+  Images,
+  PriceHistory,
+  InventoryHistory,
+  Review,
+  Data,
+  Image,
+  category,
+  ImagesToUpload,
+};

@@ -1,40 +1,36 @@
-# Spare-Parts Management Web App  
+<h1 align="center">
+  E-Commerce Web App
+</h1>
 
-### Course: **CS-165L SE**  
+### Project Description
+<br>
+<p align="justify">
+E-commerce is fast gaining ground as an accepted and used business paradigm. More and more business houses are implementing web sites providing functionality for performing commercial transactions over the web. It is reasonable to say that the process of shopping on the web is becoming commonplace.
+</p>
 
-## **Project Descripti**on:
+<p align="justify">
+The objective of this project is to develop a fully functional web application for online product sale management. It will provide the user with a catalog of different products available for purchase in store, where users will be able to order different products. In order to facilitate online purchase a shopping cart is provided to the user. 
+</p>
 
-The problem is the need for a web app to manage spare parts effectively. The goal is to create an online platform for a spare parts broker that can efficiently handle inventory, and customer orders, and provide valuable business insights. This solution requires an admin interface to request quotes from different vendors, compare them, place orders, track order statuses, and facilitate the shipping of goods to importing countries. Additionally, there’s a requirement for a financial ledger to keep logs of the manufacturer’s account.  
+<p align="justify">
+An e-commerce website is a virtual store on the Internet where customers can browse the catalog and select products of interest. The selected items may be collected in a shopping cart. At checkout time, the items in the shopping cart will be presented as an order. At that time, more information will be needed to complete the transaction. Usually, the customer will be asked to fill or select a billing address, a shipping address, a shipping option, and payment information such as online payment or COD (Cash on Delivery). An e-mail notification is sent to the customer as soon as the order is placed.
+</p>
 
-## Project Technology:
+<br>
+<br>
+<!-- ................................................................................................................................. -->
 
-| Name | Purpose | 
-| ---- | ------- |
-| A    | A       |
+### Project Technology
+This project is a Web-Based Application
+<br>
+<br>
 
-## Team
+### Developer Name
+Subhan Suleman
+<br>
+<br>
 
-| Name            | Registration Number | Role  |
-| --------------- | ------------------- | ----- |
-| Muhammad Subhan | 2021-CS-35          | Owner |
-| Ayesha Tanveer | 2020-CS-47R          | Developer |
-
-### Mock Users
-
-{
-
- "firstName": "John",
-
- "lastName": "Doe",
-
- "DOB": "1990-01-01",
-
- "role": "Admin",
-
- "emailAddress": "admin@example.com",
-
- "password": "admin123",
-
- "isVerified": true
-
-}
+### Course Name
+Software Engineering
+<br>
+<br>

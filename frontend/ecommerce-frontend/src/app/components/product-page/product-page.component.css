@@ -1,0 +1,8 @@
+.fixed-size-image {
+  height: 200px;
+  width: 250px;
+  object-fit: cover; /* or object-fit: contain; depending on your preference */
+}
+.p-tabview-panel {
+  width: 100%;
+}

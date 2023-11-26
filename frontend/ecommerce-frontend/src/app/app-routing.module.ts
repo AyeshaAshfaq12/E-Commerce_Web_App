@@ -6,6 +6,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { unauthGuard } from './guard/unauth.guard';
 import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -13,7 +14,12 @@ const routes: Routes = [
     canActivate: [unauthGuard],
   },
   {
-    path: 'home',
+    path: 'home/customer',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'home/admin',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
   },

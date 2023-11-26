@@ -7,7 +7,7 @@ const cookieSession = require("cookie-session");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const app = express();
-const injectUserId = require("./middleware/winston");
+// const injectUserId = require("./middleware/winston");
 
 //Database
 require("./database/connect");
@@ -18,6 +18,9 @@ const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
 const categoryRouter = require("./routes/category");
 const imagesRouter = require("./routes/images");
+const cartRouter = require("./routes/cart");
+const wishlistRouter = require("./routes/wishlist");
+const orderRouter = require("./routes/order");
 
 //Middleware
 app.use(express.json());
@@ -70,6 +73,15 @@ app.use("/api", productsRouter);
 
 //category
 app.use("/api", categoryRouter);
+
+//wishlist
+app.use("/api", wishlistRouter);
+
+//Cart
+app.use("/api", cartRouter);
+
+//Order
+app.use("/api", orderRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

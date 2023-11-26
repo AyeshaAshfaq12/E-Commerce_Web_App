@@ -30,7 +30,11 @@ router
   .get(validateToken, requireRoles(["Admin", "Store Operator"]), getAllTags);
 router
   .route("/products/:id")
-  .get(validateToken, requireRoles(["Admin", "Store Operator"]), getProduct)
+  .get(
+    validateToken,
+    requireRoles(["Admin", "Store Operator", "Customer"]),
+    getProduct
+  )
   .put(validateToken, requireRoles(["Admin", "Store Operator"]), updateProduct)
   .delete(
     validateToken,

@@ -29,6 +29,7 @@ const loginUser = async (req, res) => {
         message: "Login successful",
         email: emailAddress,
         fullname: user.fullname,
+        role: user.role,
         userid: user.id,
         token: token,
       });
@@ -36,7 +37,9 @@ const loginUser = async (req, res) => {
         message: "Login successful",
         email: emailAddress,
         fullname: user.fullname,
-        userid: user.id,
+        userId: user.id,
+        role: user.role,
+
         token: token,
       });
     } else {

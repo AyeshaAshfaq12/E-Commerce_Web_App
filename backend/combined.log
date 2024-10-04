@@ -170,3 +170,5 @@
 {"level":"info","message":"Audit log saved for update on Product with ID 65619c39befefafe1c2b16ae","timestamp":"2023-11-26T10:44:18.242Z"}
 {"level":"info","message":"Audit log saved for update on Product with ID 65619d98befefafe1c2b171a","timestamp":"2023-11-26T10:44:19.630Z"}
 {"level":"info","message":"Audit log saved for create on Product with ID 65633ea24f6206705663e9e0","timestamp":"2023-11-26T12:48:34.392Z"}
+{"level":"info","message":"Audit log saved for create on Category with ID 670008b79c71cfb0b4a51f53","timestamp":"2024-10-04T15:24:39.345Z"}
+{"level":"info","message":"Audit log saved for create on Product with ID 670009629c71cfb0b4a51f59","timestamp":"2024-10-04T15:27:30.130Z"}
